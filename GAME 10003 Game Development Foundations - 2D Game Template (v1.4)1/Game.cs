@@ -91,16 +91,16 @@ namespace MohawkGame2D
             // Position Tracking
             // Input.GetMouseX()
             float[] bounds = {0, 100, 250, 350, 450, 600, 800 };
-            
+
             //not getting cursor position data and comparing with bounds, cant figure it out
-            while (cursorPositionX > bounds[0] && cursorPositionX < bounds[6])
+            do
             {
                 //DrawSun(Input.GetMouseX(), Input.GetMouseY());
                 Draw.FillColor = Color.Green;
                 Draw.LineColor = Color.Black;
                 Draw.Circle(Input.GetMouseX(), Input.GetMouseY(), 25);
             }
-
+            while (cursorPositionX > bounds[0] && cursorPositionX < bounds[6]);
         }
     }
 
