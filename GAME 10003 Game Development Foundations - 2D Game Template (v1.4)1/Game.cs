@@ -11,8 +11,8 @@ namespace MohawkGame2D
     public class Game
     {
         // Place your variables here:
-
-
+        float cursorPositionX = Input.GetMouseX();
+        float cursorPositionY = Input.GetMouseY();
         /// <summary>
         ///     Setup runs once before the game loop begins.
         /// </summary>
@@ -23,41 +23,81 @@ namespace MohawkGame2D
             Window.TargetFPS = 60;
         }
 
+        void DrawSun(float x, float y)
+        {
+            Color orange = new Color(255, 165, 0);
+            Draw.FillColor = orange;
+            Draw.Ellipse(x, y, 900, 900);
+        }
+        
+        void DrawMercury(float x, float y)
+        {
+            Draw.FillColor = Color.Gray;
+            Draw.Ellipse(x, y, 30, 30);
+        }
+
+        void DrawVenus(float x, float y)
+        {
+            Color paleOrange = new Color(255, 179, 138);
+            Draw.FillColor = paleOrange;
+            Draw.Ellipse(x, y, 70, 70);
+        }
+
+        void DrawEarth(float x, float y)
+        {
+            Draw.FillColor = Color.Blue;
+            Draw.Ellipse(x, y, 80, 80);
+        }
+
+        void DrawMars(float x, float y)
+        {
+            Color redOrange = new Color(255, 116, 0);
+            Draw.FillColor = redOrange;
+            Draw.Ellipse(x, y, 40, 40);
+        }
+        void DrawJupiter(float x, float y)
+        {
+            Color paleYellow = new Color(255, 227, 192);
+            Draw.FillColor = paleYellow;
+            Draw.Ellipse(x, y, 300, 300);
+        }
+
         /// <summary>
         ///     Update runs every frame.
         /// </summary>
         public void Update()
         {
             Window.ClearBackground(Color.Black);
-           
-            //draw sun
 
-            Color orange = new Color(255, 165, 0);
-            Draw.FillColor = orange;
-            Draw.Ellipse(-300, 300, 900, 900);
+            //draw sun
+            DrawSun(-300, 300);
 
             // draw mercury
-            Draw.FillColor = Color.Gray;
-            Draw.Ellipse(200, 300, 30, 30);
+            DrawMercury(200, 300);
 
             //draw venus
-            Color paleOrange = new Color(255, 179, 138);
-            Draw.FillColor = paleOrange;
-            Draw.Ellipse(300, 300, 70, 70);
+            DrawVenus(300, 300);
 
             //draw earth
-            Draw.FillColor = Color.Blue;
-            Draw.Ellipse(400, 300, 80, 80);
+            DrawEarth(400, 300);
 
             //draw mars 
-            Color redOrange = new Color(255, 116, 0);
-            Draw.FillColor = redOrange;
-            Draw.Ellipse(500, 300, 40, 40);
+            DrawMars(500, 300);
 
             //draw jupiter
-            Color paleYellow = new Color(255, 227, 192);
-            Draw.FillColor = paleYellow;
-            Draw.Ellipse(700, 300, 300, 300);
+            DrawJupiter(700, 300);
+
+
+            // Position Tracking
+            // Input.GetMouseX()
+            float[] bounds = {0, 100, 250, 350, 450, 600, 800 };
+            
+               
+            while (cursorPositionX > bounds[0] && cursorPositionX < bounds[1])
+            {
+                DrawSun(Input.GetMouseX(), Input.GetMouseY());
+            }
+
         }
     }
 
